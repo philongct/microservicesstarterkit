@@ -1,5 +1,5 @@
 package lnguyen.springvertx.event;
 
-public interface VertxEvent {
+public interface IntegrationEvent {
     boolean isLocal();
 }
