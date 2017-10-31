@@ -53,7 +53,7 @@
         <!--<module>security</module>-->
         <module>taskexecutor</module>
 		<module>batch</module>
-        <!--<module>webmvc</module>-->
+        <module>webmvc</module>
 		<module>springvertx</module>
     </modules>
 
