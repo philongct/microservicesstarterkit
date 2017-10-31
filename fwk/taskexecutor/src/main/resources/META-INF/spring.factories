@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+lnguyen.taskexecutor.config.MultiTaskAutoConfig,\
+lnguyen.taskexecutor.config.TaskSchedulerAutoConfig
