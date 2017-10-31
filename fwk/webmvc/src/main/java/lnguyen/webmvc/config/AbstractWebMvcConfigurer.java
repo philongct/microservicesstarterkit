@@ -1,14 +1,6 @@
 package lnguyen.webmvc.config;
 
-import javax.annotation.PreDestroy;
-import java.util.concurrent.ScheduledExecutorService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.*;
-import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
-import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

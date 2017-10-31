@@ -12,6 +12,26 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>services</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>l.nguyen</groupId>
+      <artifactId>fwk-batch</artifactId>
+      <version>${fwk.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>l.nguyen</groupId>
+      <artifactId>fwk-taskexecutor</artifactId>
+      <version>${fwk.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>l.nguyen</groupId>
+      <artifactId>fwk-springvertx</artifactId>
+      <version>${fwk.version}</version>
+    </dependency>
+  </dependencies>
   
   <build>
     <plugins>

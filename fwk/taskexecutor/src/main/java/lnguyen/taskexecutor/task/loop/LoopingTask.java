@@ -1,7 +1,5 @@
 package lnguyen.taskexecutor.task.loop;
 
-import java.util.concurrent.ExecutorService;
-
 import lnguyen.taskexecutor.executor.TaskExecutorService;
 import lnguyen.taskexecutor.task.Task;
 import lnguyen.taskexecutor.task.TaskErrorHandler;

@@ -3,7 +3,6 @@ package lnguyen.taskexecutor.executor.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import lnguyen.taskexecutor.executor.ExtendedTaskExecutor;
 import lnguyen.taskexecutor.executor.TaskExecutorService;
 import lnguyen.taskexecutor.task.Task;
 import lnguyen.taskexecutor.task.TaskErrorHandler;

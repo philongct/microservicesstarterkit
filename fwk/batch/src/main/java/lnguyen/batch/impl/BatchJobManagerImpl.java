@@ -2,8 +2,8 @@ package lnguyen.batch.impl;
 
 import java.util.Map;
 
-import lnguyen.batch.JobExecutionCallBack;
 import lnguyen.batch.BatchJobManager;
+import lnguyen.batch.JobExecutionCallBack;
 import lnguyen.taskexecutor.executor.ExtendedTaskExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
