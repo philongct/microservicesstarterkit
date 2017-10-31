@@ -1,3 +1,29 @@
+# IDEA
+.idea/
+out/
+*.iml
+*.iws
+.idea_modules/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata
+bin/**
+tmp/**
+*.tmp
+*.bak
+
+# Maven
+target/
+log/
+pom.xml.*
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/
+
 # Compiled class file
 *.class
 
