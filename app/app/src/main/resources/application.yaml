@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:derby:target/db/testapp;create=true
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+    username: app
+    password: app
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      dll-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.DerbyTenSevenDialect

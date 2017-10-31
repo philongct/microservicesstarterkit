@@ -14,8 +14,8 @@
   <name>app-root</name>
   
   <modules>
-    <module>app</module>
     <module>services</module>
+    <module>app</module>
   </modules>
   
   <build>
