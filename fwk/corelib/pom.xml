@@ -8,9 +8,19 @@
         <artifactId>fwk-root</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+	
+    <artifactId>fwk-corelib</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>fwk-corelib</name>
 
-    <artifactId>fwk-taskexecutor</artifactId>
-    <version>${fwk.version}</version>
-    <packaging>jar</packaging>
-    <name>fwk-taskexecutor</name>
+	<modules>
+		<module>utils</module>
+        <module>security</module>
+        <module>taskexecutor</module>
+		<module>batch</module>
+		<module>springvertx</module>
+        <module>webmvc</module>
+    </modules>
+    
 </project>

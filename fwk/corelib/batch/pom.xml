@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>l.nguyen.fwk</groupId>
+        <artifactId>fwk-corelib</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>fwk-batch</artifactId>
+    <version>${fwk.version}</version>
+    <packaging>jar</packaging>
+    <name>fwk-batch</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring-batch.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>l.nguyen</groupId>
+            <artifactId>fwk-taskexecutor</artifactId>
+            <version>${fwk.version}</version>
+        </dependency>
+    </dependencies>
+</project>

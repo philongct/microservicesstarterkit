@@ -51,12 +51,7 @@
     </properties>
 
     <modules>
-		<module>utils</module>
-        <module>security</module>
-        <module>taskexecutor</module>
-		<module>batch</module>
-		<module>springvertx</module>
-        <module>webmvc</module>
+		<module>corelib</module>
     </modules>
 
     <!--Set global dependencies-->

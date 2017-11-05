@@ -5,26 +5,20 @@
 
     <parent>
         <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-root</artifactId>
+        <artifactId>fwk-corelib</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-batch</artifactId>
+    <artifactId>fwk-springvertx</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-batch</name>
+    <name>fwk-springvertx</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch-core</artifactId>
-            <version>${spring-batch.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>l.nguyen</groupId>
-            <artifactId>fwk-taskexecutor</artifactId>
-            <version>${fwk.version}</version>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
     </dependencies>
 </project>
