@@ -9,22 +9,29 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-batch</artifactId>
+    <artifactId>fwk-utils</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-batch</name>
+    <name>fwk-utils</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch-core</artifactId>
-            <version>${spring-batch.version}</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>l.nguyen</groupId>
-            <artifactId>fwk-taskexecutor</artifactId>
-            <version>${fwk.version}</version>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
     </dependencies>
+
 </project>
