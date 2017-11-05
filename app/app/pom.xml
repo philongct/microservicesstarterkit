@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-	<groupId>l.nguyen</groupId>
+    <groupId>l.nguyen</groupId>
     <artifactId>app-root</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
@@ -20,10 +20,28 @@
       <version>10.13.1.1</version>
     </dependency>
 
+    <!--<dependency>-->
+      <!--<groupId>l.nguyen</groupId>-->
+      <!--<artifactId>services</artifactId>-->
+      <!--<version>1.0-SNAPSHOT</version>-->
+    <!--</dependency>-->
+
     <dependency>
       <groupId>l.nguyen</groupId>
-      <artifactId>services</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <artifactId>fwk-security</artifactId>
+      <version>${fwk.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>l.nguyen</groupId>
+      <artifactId>fwk-webmvc</artifactId>
+      <version>${fwk.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${spring-boot.version}</version>
     </dependency>
 
   </dependencies>

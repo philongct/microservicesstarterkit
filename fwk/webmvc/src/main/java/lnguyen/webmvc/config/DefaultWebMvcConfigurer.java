@@ -1,10 +1,8 @@
 package lnguyen.webmvc.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -12,10 +10,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
-public abstract class AbstractWebMvcConfigurer extends WebMvcConfigurerAdapter {
+public class DefaultWebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     private static final String[] DEFAULT_RESOURCE_LOCATIONS = {
-            "classpath:/webclient/"
+            "classpath:/webclient/", "classpath:/statics/"
     };
 
     @Override
@@ -26,6 +24,11 @@ public abstract class AbstractWebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/index.html");
+    }
+
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
 
     /**

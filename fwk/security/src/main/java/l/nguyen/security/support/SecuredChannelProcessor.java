@@ -1,4 +1,4 @@
-package lnguyen.security.support;
+package l.nguyen.security.support;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
