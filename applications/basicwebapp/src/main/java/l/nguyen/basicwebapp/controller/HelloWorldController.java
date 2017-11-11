@@ -1,4 +1,4 @@
-package l.nguyen.app.controller;
+package l.nguyen.basicwebapp.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;

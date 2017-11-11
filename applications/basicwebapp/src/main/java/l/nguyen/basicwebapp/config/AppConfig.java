@@ -1,4 +1,4 @@
-package l.nguyen.app.config;
+package l.nguyen.basicwebapp.config;
 
 import l.nguyen.security.config.BasicJwtWebSecurityConfigurer;
 import lnguyen.webmvc.config.DefaultWebMvcConfigurer;

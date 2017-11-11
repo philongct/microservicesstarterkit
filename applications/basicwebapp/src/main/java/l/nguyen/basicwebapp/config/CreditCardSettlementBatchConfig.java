@@ -1,6 +1,6 @@
-package l.nguyen.app.config;
+package l.nguyen.basicwebapp.config;
 
-import l.nguyen.app.batch.TransactionsImportJobConfig;
+import l.nguyen.basicwebapp.batch.TransactionsImportJobConfig;
 import org.springframework.batch.core.configuration.support.ApplicationContextFactory;
 import org.springframework.batch.core.configuration.support.GenericApplicationContextFactory;
 import org.springframework.context.annotation.Bean;

@@ -15,7 +15,7 @@
     <name>app-root</name>
     
     <modules>
-        <module>app</module>
+        <module>basicwebapp</module>
     </modules>
     
     <build>

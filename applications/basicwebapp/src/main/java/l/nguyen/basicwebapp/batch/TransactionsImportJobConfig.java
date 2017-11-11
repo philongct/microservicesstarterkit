@@ -1,7 +1,7 @@
-package l.nguyen.app.config;
+package l.nguyen.basicwebapp.batch;
 
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RepositoriesConfig {
+public class TransactionsImportJobConfig {
 }

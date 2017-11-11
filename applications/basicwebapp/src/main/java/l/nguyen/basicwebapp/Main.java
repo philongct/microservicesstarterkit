@@ -1,7 +1,7 @@
-package l.nguyen.app;
+package l.nguyen.basicwebapp;
 
 
-import l.nguyen.app.config.AppConfig;
+import l.nguyen.basicwebapp.config.AppConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
