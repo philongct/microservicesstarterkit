@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-corelib</artifactId>
+        <artifactId>core-libs</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-webmvc</artifactId>
+    <artifactId>core-webmvc</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-webmvc</name>
+    <name>core-webmvc</name>
 
     <dependencies>
         <dependency>

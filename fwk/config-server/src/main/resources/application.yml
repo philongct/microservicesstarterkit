@@ -4,6 +4,10 @@ spring:
       server:
         native:
           search-locations: classpath:/shared
+
+management:
+  security:
+    enabled: false # disabled the security
           
 # Config server binding port
 server:

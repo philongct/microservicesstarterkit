@@ -5,12 +5,12 @@
 
     <parent>
         <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-corelib</artifactId>
+        <artifactId>core-libs</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-taskexecutor</artifactId>
+    <artifactId>core-taskexecutor</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-taskexecutor</name>
+    <name>core-taskexecutor</name>
 </project>

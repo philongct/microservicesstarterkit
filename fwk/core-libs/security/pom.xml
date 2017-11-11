@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-corelib</artifactId>
+        <artifactId>core-libs</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-security</artifactId>
+    <artifactId>core-security</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-security</name>
+    <name>core-security</name>
 
     <!--Set global dependencies-->
     <dependencies>

@@ -5,14 +5,14 @@
 
     <parent>
         <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-corelib</artifactId>
+        <artifactId>core-libs</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fwk-springvertx</artifactId>
+    <artifactId>core-springvertx</artifactId>
     <version>${fwk.version}</version>
     <packaging>jar</packaging>
-    <name>fwk-springvertx</name>
+    <name>core-springvertx</name>
 
     <dependencies>
         <dependency>

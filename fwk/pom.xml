@@ -18,11 +18,11 @@
         <!--Spring-->
         <spring.version>4.3.11.RELEASE</spring.version>
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
+        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-oauth2.version>2.1.1.RELEASE</spring-oauth2.version>
         <spring-data.version>1.11.6.RELEASE</spring-data.version>
         <spring-batch.version>3.0.8.RELEASE</spring-batch.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
 
         <!--Web-->
         <servlet.version>3.1.0</servlet.version>
@@ -55,7 +55,7 @@
     </properties>
 
     <modules>
-		<module>corelib</module>
+		<module>core-libs</module>
         <module>config-server</module>
         <module>service-registry</module>
         <module>api-gateway</module>
@@ -63,6 +63,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -90,13 +98,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
-            <version>${spring-boot.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring-boot.version}</version>
         </dependency>
 
         <dependency>
@@ -120,7 +126,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
