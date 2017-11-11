@@ -2,6 +2,10 @@ logging:
   level:
     org.springframework.security: INFO
 
+management:
+  security:
+    enabled: false # disabled the security
+
 hystrix:
   command:
     default:
@@ -9,6 +13,13 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
+
+ribbon:
+  eureka:
+    enabled: true
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 7000
 
 eureka:
   instance:
