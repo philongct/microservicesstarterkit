@@ -1,3 +1,2 @@
 server:
   context-path: /authcode
-  port: 6000

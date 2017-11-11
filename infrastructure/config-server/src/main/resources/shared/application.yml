@@ -22,6 +22,8 @@ ribbon:
   eureka:
     enabled: true
   MaxAutoRetries: 2
+  # start 2 microservice instances, try GET serveral times, then shutdown 1,
+  # try GET serveral times again to see intermittent loading (due to default round-robin load balancing)
   MaxAutoRetriesNextServer: 0
   ReadTimeout: 7000
 
