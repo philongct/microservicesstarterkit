@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-	    <groupId>l.nguyen.fwk</groupId>
-        <artifactId>fwk-root</artifactId>
+	    <groupId>l.nguyen.infrastructure</groupId>
+        <artifactId>infrastructure</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath/> <!-- take it from classpath -->
     </parent>
@@ -22,9 +22,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>l.nguyen.fwk</groupId>
+            <groupId>l.nguyen.infrastructure</groupId>
             <artifactId>core-utils</artifactId>
-            <version>${fwk.version}</version>
+            <version>${infrastructure.version}</version>
         </dependency>
 
         <dependency>
