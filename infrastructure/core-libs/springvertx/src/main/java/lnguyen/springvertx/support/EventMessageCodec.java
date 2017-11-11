@@ -6,9 +6,9 @@ import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.eventbus.impl.CodecManager;
 import lnguyen.springvertx.event.IntegrationEvent;
 
-public class IntegrationEventCodec implements MessageCodec<IntegrationEvent, IntegrationEvent> {
+public class EventMessageCodec implements MessageCodec<IntegrationEvent, IntegrationEvent> {
 
-    public static final String CODEC_NAME = IntegrationEventCodec.class.getName();
+    public static final String CODEC_NAME = EventMessageCodec.class.getName();
 
     private MessageCodec<String, String> stringMessageCodec = CodecManager.STRING_MESSAGE_CODEC;
 
@@ -34,16 +34,16 @@ public class IntegrationEventCodec implements MessageCodec<IntegrationEvent, Int
 
     @Override
     public IntegrationEvent transform(IntegrationEvent integrationEvent) {
-        return null;
+        return integrationEvent;
     }
 
     @Override
     public String name() {
-        return null;
+        return CODEC_NAME;
     }
 
     @Override
     public byte systemCodecID() {
-        return 0;
+        return -1;
     }
 }

@@ -1,20 +1,16 @@
 package lnguyen.springvertx;
 
-import io.vertx.core.Vertx;
+import io.vertx.core.*;
 
-public class VertxSystem {
+public interface VertxSystem {
 
-    private final Vertx vertx;
+    Vertx getVertx();
 
-    public VertxSystem(Vertx vertx) {
-        this.vertx = vertx;
-    }
+    void deployService(Class<? extends SpringVertxService> serviceClass);
 
-    public Vertx getVertx() {
-        return vertx;
-    }
+    void deployService(Class<? extends SpringVertxService> serviceClass, Handler<AsyncResult<String>> asyncResultHandler);
 
-    public void deployService(VertxService service) {
+    void deployService(Class<? extends SpringVertxService> serviceClass, DeploymentOptions deploymentOptions);
 
-    }
+    void deployService(Class<? extends SpringVertxService> serviceClass, DeploymentOptions deploymentOptions, Handler<AsyncResult<String>> asyncResultHandler);
 }

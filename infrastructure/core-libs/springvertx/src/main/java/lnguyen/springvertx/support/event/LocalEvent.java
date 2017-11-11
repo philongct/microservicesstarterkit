@@ -1,4 +1,6 @@
-package lnguyen.springvertx.event;
+package lnguyen.springvertx.support.event;
+
+import lnguyen.springvertx.event.IntegrationEvent;
 
 public abstract class LocalEvent implements IntegrationEvent {
     @Override
