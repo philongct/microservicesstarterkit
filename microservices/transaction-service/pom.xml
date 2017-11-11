@@ -11,11 +11,11 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>authcode-service</artifactId>
+	<artifactId>transaction-service</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>authcode-service</name>
+	<name>transaction-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
@@ -32,7 +32,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>l.nguyen.ms.authcode.AuthCodeApplication</mainClass>
+					<mainClass>l.nguyen.ms.transaction.CreditCardTransactionApplication</mainClass>
 					<jvmArguments>-Xmx64m</jvmArguments>
 				</configuration>
 				<executions>

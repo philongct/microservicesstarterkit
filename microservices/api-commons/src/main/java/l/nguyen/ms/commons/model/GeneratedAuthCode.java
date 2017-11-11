@@ -1,4 +1,4 @@
-package l.nguyen.ms.authcode.model;
+package l.nguyen.ms.commons.model;
 
 import java.util.Date;
 

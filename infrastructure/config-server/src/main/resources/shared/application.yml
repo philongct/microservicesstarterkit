@@ -6,6 +6,10 @@ management:
   security:
     enabled: false # disabled the security
 
+feign:
+    hystrix:
+        enabled: true
+
 hystrix:
   command:
     default:

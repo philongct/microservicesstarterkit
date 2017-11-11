@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: transaction-service
+  cloud:
+    config:
+      http://localhost:8888

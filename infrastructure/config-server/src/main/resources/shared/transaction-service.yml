@@ -1,0 +1,3 @@
+server:
+  context-path: /transactions
+  port: 6001
