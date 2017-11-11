@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: authcode-service
+  cloud:
+    config:
+      http://localhost:8888
