@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import static l.nguyen.security.support.jwt.JwtTokenUtil.JWT_COOKIE_NAME;
+
 public class BasicJwtWebSecurityConfigurer extends AbstractSecurityConfigurer {
 
 	@Value("${jwt.secret}")
@@ -23,11 +25,16 @@ public class BasicJwtWebSecurityConfigurer extends AbstractSecurityConfigurer {
 		super.configureAuthRequests(http);
 		http
 			.sessionManagement()
+				// JWT already contains user information, so no need stateful
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 				// Use form login to create jwt token
 				.formLogin()
 					.successHandler(new JwtAuthenticationSuccessHandler(jwtTokenUtil()))
+			.and()
+				.logout()
+					.clearAuthentication(true)
+					.deleteCookies(JWT_COOKIE_NAME)
 			.and()
 				// Do not put security filter as bean otherwise Spring will treat it global filter
 				// and it will filter twice

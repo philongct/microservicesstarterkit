@@ -19,20 +19,22 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <!--For OAuth2 server-->
+            <!--For OAuth2 & Microservices-->
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
-            <!--For OAuth2 server-->
+            <!--For OAuth2 & Microservices-->
             <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
+            <!--For OAuth2 & Microservices-->
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -47,6 +49,7 @@
             <version>${spring-security.version}</version>
         </dependency>
 
+        <!--To build jwt token. Exclude if not using basic jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>

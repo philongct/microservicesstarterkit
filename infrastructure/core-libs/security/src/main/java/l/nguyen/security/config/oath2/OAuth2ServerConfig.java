@@ -59,9 +59,11 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .accessTokenValiditySeconds(600)
                 .refreshTokenValiditySeconds(600)
                 // Bypass approve form (returned automatically after login and access
-                // http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient)
+                // http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
                 .autoApprove(true)
-                //.redirectUris("")
+                // default redirect uris if "redirect_uri" param not found (must match with configured value if given)
+                .redirectUris("clienturi")
+                // access scope (read, write, ...)
                 .scopes("openid");
 //        .and()
 //            .withClient()
@@ -90,7 +92,7 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .csrf().disable()
                 .anonymous().disable()
                 .httpBasic().disable()
-                // TODO: Login form for http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient
+                // TODO: If success redirect to /oauth/authorize?response_type=code&client_id=anyclient
                 .formLogin().permitAll()
             .and()
                 .authorizeRequests()

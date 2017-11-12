@@ -26,6 +26,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
+        // Web app must assign token to header to avoid CSRF
         final String requestHeader = request.getHeader(JwtTokenUtil.HEADER_STRING);
 
         SecurityContextHolder.getContext().setAuthentication(null);
@@ -44,7 +45,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             logger.warn("couldn't find bearer string, will ignore the header");
         }
 
-        // TODO validate user with persisted data and cache it
+        // TODO: validate jwt credentials with persisted data and cache it
         if (jwtCredentials != null) {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(jwtCredentials.getPrincipal(), null, jwtCredentials.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
