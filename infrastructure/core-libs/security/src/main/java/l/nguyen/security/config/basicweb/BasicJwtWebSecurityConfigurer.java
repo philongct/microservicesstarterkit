@@ -1,4 +1,4 @@
-package l.nguyen.security.config;
+package l.nguyen.security.config.basicweb;
 
 import l.nguyen.security.support.TimeProvider;
 import l.nguyen.security.support.jwt.JwtAuthenticationSuccessHandler;
@@ -6,7 +6,6 @@ import l.nguyen.security.support.jwt.JwtAuthenticationTokenFilter;
 import l.nguyen.security.support.jwt.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;

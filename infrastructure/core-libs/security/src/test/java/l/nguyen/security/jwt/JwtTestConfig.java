@@ -1,6 +1,6 @@
 package l.nguyen.security.jwt;
 
-import l.nguyen.security.config.BasicJwtWebSecurityConfigurer;
+import l.nguyen.security.config.basicweb.BasicJwtWebSecurityConfigurer;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

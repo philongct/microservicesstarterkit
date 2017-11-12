@@ -1,4 +1,4 @@
-package l.nguyen.security.config;
+package l.nguyen.security.config.basicweb;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
@@ -40,7 +40,7 @@ public abstract class AbstractSecurityConfigurer extends WebSecurityConfigurerAd
     private String securedResources;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    final protected void configure(HttpSecurity http) throws Exception {
         configureSsl(http);
         configureAuthEntry(http);
         configureAuthRequests(http);
@@ -83,7 +83,7 @@ public abstract class AbstractSecurityConfigurer extends WebSecurityConfigurerAd
     @Bean
     protected AuthenticationEntryPoint authEntryPoint() {
         // Simply reject unauthorized requests
-        return (request, response, exception) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+        return (request, response, exception) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized. Please login first");
     }
 
     @Bean

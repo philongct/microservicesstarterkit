@@ -1,6 +1,6 @@
 package l.nguyen.basicwebapp.config;
 
-import l.nguyen.security.config.BasicJwtWebSecurityConfigurer;
+import l.nguyen.security.config.basicweb.BasicJwtWebSecurityConfigurer;
 import lnguyen.webmvc.config.DefaultWebMvcConfigurer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
