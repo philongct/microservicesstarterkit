@@ -16,11 +16,11 @@
 
 	<modules>
 		<module>utils</module>
-        <module>security</module>
         <module>taskexecutor</module>
-		<module>batch</module>
-		<module>springvertx</module>
+        <module>batch</module>
         <module>webmvc</module>
+        <module>security</module>
+		<module>springvertx</module>
     </modules>
 
 </project>

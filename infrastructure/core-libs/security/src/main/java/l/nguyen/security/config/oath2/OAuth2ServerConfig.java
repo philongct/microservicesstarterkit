@@ -1,10 +1,7 @@
 package l.nguyen.security.config.oath2;
 
-import java.security.KeyPair;
-
 import l.nguyen.security.config.basicweb.AbstractSecurityConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +9,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -22,6 +19,10 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableAuthorizationServer
@@ -62,7 +63,7 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 // http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
                 .autoApprove(true)
                 // default redirect uris if "redirect_uri" param not found (must match with configured value if given)
-                .redirectUris("clienturi")
+//                .redirectUris("clienturi")
                 // access scope (read, write, ...)
                 .scopes("openid");
 //        .and()
@@ -83,6 +84,15 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
     }
 
     @Configuration
+    @EnableWebMvc
+    protected static class BasicWebMvcConfig extends WebMvcConfigurerAdapter {
+        @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        }
+    }
+
+    @Configuration
     @Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
     protected static class LoginConfiguration extends AbstractSecurityConfigurer {
 
@@ -92,14 +102,22 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .csrf().disable()
                 .anonymous().disable()
                 .httpBasic().disable()
-                // TODO: If success redirect to /oauth/authorize?response_type=code&client_id=anyclient
                 .formLogin().permitAll()
             .and()
                 .authorizeRequests()
-                    .antMatchers("/login", "/auth/**", "/fonts/**", "/js/**", "/css/**")
-                        .permitAll()
                     .anyRequest()
                         .authenticated();
+        }
+
+        @Override
+        public void configure(WebSecurity web) throws Exception {
+            web
+                .ignoring()
+                    .antMatchers("/auth/**", "/fonts/**", "/js/**", "/css/**");
+        }
+
+        protected AuthenticationEntryPoint authEntryPoint() {
+            return (request, response, exception) -> response.sendRedirect("/auth/login.html");
         }
     }
 }

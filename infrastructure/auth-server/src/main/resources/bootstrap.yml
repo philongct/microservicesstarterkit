@@ -6,7 +6,7 @@
 #      uri: http://localhost:8888
 
 debug:
-  true
+  false
 
 server:
   port: 9999
