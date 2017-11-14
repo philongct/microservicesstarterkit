@@ -36,6 +36,11 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
         return new JwtTokenStore(jwtTokenEnhancer());
     }
 
+    /**
+     * Encode Oauth2 tokens in JWT using private key
+     *
+     * @return
+     */
     @Bean
     protected JwtAccessTokenConverter jwtTokenEnhancer() {
         // Generate key with:
@@ -59,7 +64,7 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token", "password")
                 .accessTokenValiditySeconds(600)
                 .refreshTokenValiditySeconds(600)
-                // Bypass approve form (returned automatically after login and access
+                // Bypass approve form (/oauth/confirm_access) after login
                 // http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
                 .autoApprove(true)
                 // default redirect uris if "redirect_uri" param not found (must match with configured value if given)

@@ -6,4 +6,4 @@ spring:
       http://localhost:8888
 
 server:
-  port: 6001
+  port: 6000

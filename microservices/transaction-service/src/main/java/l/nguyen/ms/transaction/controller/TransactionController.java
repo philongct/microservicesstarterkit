@@ -12,6 +12,7 @@ import l.nguyen.ms.transaction.proxy.AuthCodeControllerClient;
 import l.nguyen.ms.transaction.proxy.AuthCodeControllerClientRx;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TransactionController {
 
-	@Autowired
-	private AuthCodeControllerClient authCodeClient;
-
 //	@Autowired
 //	private AuthCodeControllerClientRx authCodeClientRx;
+
+	@Autowired
+	private AuthCodeControllerClient authCodeClient;
 
 	@GetMapping("/{merchantId}")
 	public List<CreditCardTransaction> getAllTransactions(@PathVariable String merchantId) {

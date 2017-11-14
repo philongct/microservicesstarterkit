@@ -9,6 +9,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,29 @@ public class AuthCodeController implements AuthCodeControllerApi {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthCodeController.class);
 
+	/**
+	 * To access this resource directly: <br>
+	 * (1)curl -X POST "http://clientId:clientSecret@localhost:9999/oauth/token" -d "password=user_abc_efg&username=user_abc_efg&grant_type=password&scope=openid" <br>
+	 * (2)curl --header "Authorization: Bearer [token]" http://localhost:6000/merchantId
+	 *
+	 * @param merchantId
+	 * @return
+	 */
+	@GetMapping("/{merchantId}")
+	@PreAuthorize("#oauth2.hasScope('openid') && hasAuthority('abc')")
+	public String generateAuthCode(@PathVariable String merchantId) {
+		return RandomStringUtils.randomNumeric(6);
+	}
+
+	/**
+	 * For microservice client
+	 *
+	 * @param merchantId
+	 * @param from
+	 * @param to
+	 * @return
+	 */
+	@PreAuthorize("#oauth2.hasScope('openid')")
 	@Override
 	public List<GeneratedAuthCode> getGeneratedAuthCodes(@PathVariable String merchantId,
 														 @PathVariable int from,
