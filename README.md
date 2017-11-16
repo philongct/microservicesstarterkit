@@ -21,7 +21,7 @@ mvn clean install -DskipTests
 2. In browser go to http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://stupidurl
    * Fill user_abc/user_abc to login
    * Get "code" param from redirected page
-   * curl "localhost:9999/oauth/token" -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl&code=<code>"
+   * curl "localhost:9999/oauth/token" -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl&code=[code]"
    * curl -H "Authorization: Bearer <access_token>" "http://localhost:6000/authcode/merchantId"
 
 ### Microservices call using client_credentials
