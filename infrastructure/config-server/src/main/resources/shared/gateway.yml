@@ -40,17 +40,21 @@ server:
 sidecar:
   port: 8000
 
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 20000
-
-ribbon:
-  ReadTimeout: 20000
-  ConnectTimeout: 20000
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:9999/oauth/token
+      userAuthorizationUri: http://localhost:9999/oauth/authorize
+      clientId: anyclient
+      clientSecret: clientsecret
+    resource:
+      jwt:
+        # just a stupid key to get rid of Missing tokenInfoUri and userInfoUri and there is no JWT verifier key
+        # because we will configure token service manually
+        keyValue: stupid
+      id: openid
 
 zuul:
   host:

@@ -26,6 +26,7 @@ ribbon:
   # try GET serveral times again to see intermittent loading (due to default round-robin load balancing)
   MaxAutoRetriesNextServer: 0
   ReadTimeout: 7000
+  ConnectTimeout: 20000
 
 eureka:
   instance:
