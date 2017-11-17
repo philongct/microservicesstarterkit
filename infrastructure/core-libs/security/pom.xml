@@ -72,8 +72,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>l.nguyen.infrastructure</groupId>
+            <artifactId>core-webmvc</artifactId>
+            <version>${infrastructure.version}</version>
             <scope>test</scope>
         </dependency>
 

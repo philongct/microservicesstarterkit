@@ -18,7 +18,19 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
+
+        <dependency>
+            <groupId>l.nguyen.infrastructure</groupId>
+            <artifactId>core-webmvc</artifactId>
+            <version>${infrastructure.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
