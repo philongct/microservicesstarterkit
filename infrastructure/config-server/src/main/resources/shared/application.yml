@@ -39,9 +39,11 @@ ribbon:
   ConnectTimeout: 20000
 
 eureka:
+  server:
+    port: 8761
   instance:
     prefer-ip-address: true
     hostname: localhost
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}/eureka/

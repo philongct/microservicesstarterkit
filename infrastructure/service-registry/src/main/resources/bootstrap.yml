@@ -6,13 +6,8 @@ spring:
       uri: http://localhost:8888
 
 eureka:
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
   client:
     registerWithEureka: false
     fetchRegistry: false
-    serviceUrl:
-          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     server:
       waitTimeInMsWhenSyncEmpty: 0
