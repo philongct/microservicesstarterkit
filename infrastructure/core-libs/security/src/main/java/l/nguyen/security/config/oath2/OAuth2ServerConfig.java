@@ -2,6 +2,7 @@ package l.nguyen.security.config.oath2;
 
 import l.nguyen.security.config.basicweb.AbstractSecurityConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,8 +65,8 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token", "password")
                 .accessTokenValiditySeconds(600)
                 .refreshTokenValiditySeconds(600)
-                // Bypass approve form (/oauth/confirm_access) after login
-                // http://localhost:9999/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
+                // Bypass approve form (/uaa/oauth/confirm_access) after login
+                // http://localhost:9999/uaa/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
                 .autoApprove(true)
                 // default redirect uris if "redirect_uri" param not found (must match with configured value if given)
 //                .redirectUris("clienturi")
@@ -84,7 +85,7 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer
             .tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()")
-            // Allow curl -X POST "http://localhost:9999/oauth/token" -d "password=<password>&username=<username>&grant_type=password&scope=openid&client_secret=clientsecret&client_id=anyclient"
+            // Allow curl -X POST "http://localhost:9999/uaa/oauth/token" -d "password=<password>&username=<username>&grant_type=password&scope=openid&client_secret=clientsecret&client_id=anyclient"
             .allowFormAuthenticationForClients();
     }
 
@@ -100,6 +101,9 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
     @Configuration
     @Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
     protected static class LoginConfiguration extends AbstractSecurityConfigurer {
+
+        @Value("${uaa.server.context-path}")
+        private String uaaServerContextPath;
 
         @Override
         protected void configureAuthRequests(HttpSecurity http) throws Exception {
@@ -122,7 +126,7 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
         }
 
         protected AuthenticationEntryPoint authEntryPoint() {
-            return (request, response, exception) -> response.sendRedirect("/auth/login.html");
+            return (request, response, exception) -> response.sendRedirect(uaaServerContextPath + "/auth/login.html");
         }
     }
 }

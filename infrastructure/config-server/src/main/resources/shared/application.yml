@@ -1,6 +1,16 @@
+# This file is applied for all microservices
+
 logging:
   level:
     org.springframework.security: INFO
+
+uaa:
+  server:
+    port: 9999
+    # Since we're using same domain name for all services, need to use context-path to avoid cookie conflicts
+    # (JSESSIONID of API Gateway and UAA Server)
+    context-path: /uaa
+    url: http://localhost:${uaa.server.port}${uaa.server.context-path}
 
 management:
   security:
@@ -31,6 +41,7 @@ ribbon:
 eureka:
   instance:
     prefer-ip-address: true
+    hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/

@@ -21,7 +21,7 @@ public class AuthCodeController implements AuthCodeControllerApi {
 
 	/**
 	 * To access this resource directly: <br>
-	 * (1)curl "http://anyclient:clientsecret@localhost:9999/oauth/token" -d "password=user_abc&username=user_abc&grant_type=password&scope=openid" <br>
+	 * (1)curl "http://anyclient:clientsecret@localhost:9999/uaa/oauth/token" -d "password=user_abc&username=user_abc&grant_type=password&scope=openid" <br>
 	 * (2)curl -H "Authorization: Bearer [token]" http://localhost:6000/merchantId
 	 *
 	 * @param merchantId

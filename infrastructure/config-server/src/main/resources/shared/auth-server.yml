@@ -1,0 +1,6 @@
+debug:
+  false
+
+server:
+  port: ${uaa.server.port}
+  context-path: ${uaa.server.context-path}

@@ -17,14 +17,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>l.nguyen.infrastructure</groupId>
-            <artifactId>core-security</artifactId>
-            <version>${infrastructure.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>l.nguyen.infrastructure</groupId>
+            <artifactId>core-security</artifactId>
+            <version>${infrastructure.version}</version>
         </dependency>
 
         <dependency>

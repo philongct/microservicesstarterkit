@@ -7,6 +7,6 @@ security:
       # TODO each client should have its own config entry in auth server
       clientId: anyclient
       clientSecret: clientsecret
-      accessTokenUri: http://localhost:9999/oauth/token
+      accessTokenUri: ${uaa.server.url}/oauth/token
       grant-type: client_credentials
       scope: openid

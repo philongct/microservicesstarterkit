@@ -1,12 +1,6 @@
-#spring:
-#  application:
-#    name: auth-server
-#  cloud:
-#    config:
-#      uri: http://localhost:8888
-
-debug:
-  false
-
-server:
-  port: 9999
+spring:
+  application:
+    name: auth-server
+  cloud:
+    config:
+      uri: http://localhost:8888
