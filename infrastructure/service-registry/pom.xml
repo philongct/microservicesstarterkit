@@ -33,6 +33,12 @@
         </dependency>
 
         <dependency>
+            <groupId>l.nguyen.infrastructure</groupId>
+            <artifactId>core-security</artifactId>
+            <version>${infrastructure.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-client</artifactId>
         </dependency>

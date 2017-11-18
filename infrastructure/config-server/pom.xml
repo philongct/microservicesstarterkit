@@ -32,6 +32,13 @@
             </exclusions>
         </dependency>
 
+        <!--For keystore-->
+        <dependency>
+            <groupId>l.nguyen.infrastructure</groupId>
+            <artifactId>core-security</artifactId>
+            <version>${infrastructure.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>l.nguyen.infrastructure</groupId>
             <artifactId>core-webmvc</artifactId>

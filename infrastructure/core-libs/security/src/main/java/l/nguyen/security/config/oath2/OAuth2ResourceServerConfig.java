@@ -47,6 +47,7 @@ public abstract class OAuth2ResourceServerConfig extends ResourceServerConfigure
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         String publicKey = null;
 
+        // keytool -list -rfc --keystore keystore.jks | openssl x509 -inform pem -pubkey
         Resource resource = new ClassPathResource("fwk/public.txt");
         try(BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
             publicKey = br.lines().collect(Collectors.joining("\n"));

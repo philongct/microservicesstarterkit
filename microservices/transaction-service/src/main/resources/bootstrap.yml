@@ -3,7 +3,7 @@ spring:
     name: transaction-service
   cloud:
     config:
-      http://localhost:8888
+      https://localhost:8888
 
 server:
   port: 7000

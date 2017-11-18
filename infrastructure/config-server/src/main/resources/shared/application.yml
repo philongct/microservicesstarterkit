@@ -4,13 +4,19 @@ logging:
   level:
     org.springframework.security: INFO
 
+server:
+  ssl:
+    key-store: classpath:fwk/keystore.jks
+    key-store-password: secret
+    keyAlias: lnguyen
+
 uaa:
   server:
     port: 9999
     # Since we're using same domain name for all services, need to use context-path to avoid cookie conflicts
     # (JSESSIONID of API Gateway and UAA Server)
     context-path: /uaa
-    url: http://localhost:${uaa.server.port}${uaa.server.context-path}
+    url: https://localhost:${uaa.server.port}${uaa.server.context-path}
 
 management:
   security:
@@ -41,9 +47,14 @@ ribbon:
 eureka:
   server:
     port: 8761
+  # eureka client instance. Move to each application for suitable hostnames
   instance:
-    prefer-ip-address: true
+    # not prefer ip address because certificates based on domain name
+    prefer-ip-address: false
     hostname: localhost
+    securePortEnabled: true
+    nonSecurePortEnabled: false
+    securePort: ${server.port}
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.server.port}/eureka/
+      defaultZone: https://${eureka.instance.hostname}:${eureka.server.port}/eureka/
