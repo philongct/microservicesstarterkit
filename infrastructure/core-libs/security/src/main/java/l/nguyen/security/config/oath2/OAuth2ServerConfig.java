@@ -88,45 +88,4 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
             // Allow curl -X POST "http://localhost:9999/uaa/oauth/token" -d "password=<password>&username=<username>&grant_type=password&scope=openid&client_secret=clientsecret&client_id=anyclient"
             .allowFormAuthenticationForClients();
     }
-
-    @Configuration
-    @EnableWebMvc
-    protected static class BasicWebMvcConfig extends WebMvcConfigurerAdapter {
-        @Override
-        public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        }
-    }
-
-    @Configuration
-    @Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
-    protected static class LoginConfiguration extends AbstractSecurityConfigurer {
-
-        @Value("${uaa.server.context-path}")
-        private String uaaServerContextPath;
-
-        @Override
-        protected void configureAuthRequests(HttpSecurity http) throws Exception {
-            http
-                .csrf().disable()
-                .anonymous().disable()
-                .httpBasic().disable()
-                .formLogin().permitAll()
-            .and()
-                .authorizeRequests()
-                    .anyRequest()
-                        .authenticated();
-        }
-
-        @Override
-        public void configure(WebSecurity web) throws Exception {
-            web
-                .ignoring()
-                    .antMatchers("/auth/**", "/fonts/**", "/js/**", "/css/**");
-        }
-
-        protected AuthenticationEntryPoint authEntryPoint() {
-            return (request, response, exception) -> response.sendRedirect(uaaServerContextPath + "/auth/login.html");
-        }
-    }
 }
