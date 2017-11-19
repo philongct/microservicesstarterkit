@@ -25,6 +25,9 @@ management:
 feign:
   hystrix:
     enabled: true
+  # Use OkHttp for HTTP2
+  okhttp:
+    enabled: true
 
 hystrix:
   command:
@@ -36,6 +39,9 @@ hystrix:
 
 ribbon:
   eureka:
+    enabled: true
+  # Use OkHttp for HTTP2
+  okhttp:
     enabled: true
   MaxAutoRetries: 2
   # start 2 microservice instances, try GET serveral times, then shutdown 1,

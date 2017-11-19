@@ -1,34 +1,30 @@
 # webappquickstart
 
-
 ## Build
 ```
 mvn clean install -DskipTests
 ```
-## Install SSL Certificates
-Because of using https with self-signed certificate, it need to install the certificate to Java trusted CAs
-```
-keytool -import -trustcacerts -keystore "<jdk_home>/jre/lib/security/cacerts" -storepass changeit -alias lnguyen -file lnguyen.cer -v
-```
-Note: It may need privileged account to write to the keystore
 
 ## Start services
 * ConfigServer
 * RegistryServer
 * OAuth2Server
+* ApiGateway
 * AuthCodeApplication
 * CreditCardTransaction
+
+Notice: In this example I'm using HTTP2 (via HTTPS with a self-signed certificate) for Microservices RPCs, HTTPS is disabled for Config Server, Registry Server, OAuth2Server.
 
 ## Test
 ### Access Resource using OAuth2 token
 1. Use grant type = password
-   * curl -k https://anyclient:clientsecret@localhost:9999/uaa/oauth/token -d "password=user_abc&username=user_abc&grant_type=password&scope=openid"
+   * curl http://anyclient:clientsecret@localhost:9999/uaa/oauth/token -d "password=user_abc&username=user_abc&grant_type=password&scope=openid"
    * curl -k -I -H "Authorization: Bearer <access_token>" https://localhost:6000/authcode/merchantId
 2. use grant type = authorization_code
    * In browser go to http://localhost:9999/uaa/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://stupidurl
    * Fill user_abc/user_abc to login
    * Get "code" param from redirected page
-   * curl -k https://localhost:9999/uaa/oauth/token -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl&code=[code]"
+   * curl http://localhost:9999/uaa/oauth/token -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl&code=[code]"
    * curl -k -I -H "Authorization: Bearer <access_token>" https://localhost:6000/authcode/merchantId
 
 ### Microservices call using client_credentials
