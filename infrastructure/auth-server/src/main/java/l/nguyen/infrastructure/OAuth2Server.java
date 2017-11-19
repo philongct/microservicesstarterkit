@@ -32,7 +32,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 */
 
 @SpringBootApplication
-public class Oauth2Server extends OAuth2ServerConfig {
+public class OAuth2Server extends OAuth2ServerConfig {
 
 	@Configuration
 	@EnableWebMvc
@@ -77,6 +77,6 @@ public class Oauth2Server extends OAuth2ServerConfig {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Oauth2Server.class, args);
+		SpringApplication.run(OAuth2Server.class, args);
 	}
 }
