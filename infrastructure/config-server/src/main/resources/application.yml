@@ -4,11 +4,6 @@ spring:
       server:
         native:
           search-locations: classpath:/shared
-          
-# Config server binding port
+
 server:
   port: 8888
-  ssl:
-    key-store: classpath:fwk/keystore.jks
-    key-store-password: secret
-    keyAlias: lnguyen
