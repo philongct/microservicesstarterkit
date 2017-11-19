@@ -7,3 +7,10 @@ spring:
 
 server:
   port: 6000
+
+---
+spring:
+  profiles: peer
+server:
+  # Auto assigned
+  port: 0
