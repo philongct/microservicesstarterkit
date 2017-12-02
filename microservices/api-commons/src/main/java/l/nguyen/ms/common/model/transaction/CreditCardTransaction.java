@@ -6,7 +6,11 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lnguyen.jpa.AbstractEntity;
+import lnguyen.utils.datetime.BasicDatetimeDeserializer;
+import lnguyen.utils.datetime.BasicDatetimeSerializer;
 
 @Entity
 public class CreditCardTransaction extends AbstractEntity {
@@ -21,6 +25,8 @@ public class CreditCardTransaction extends AbstractEntity {
     private Double moneyAmount;
 
     @Column
+    @JsonSerialize(using = BasicDatetimeSerializer.class)
+    @JsonDeserialize(using = BasicDatetimeDeserializer.class)
     private Date transactionDt;
 
     @OneToOne(fetch = FetchType.EAGER)
