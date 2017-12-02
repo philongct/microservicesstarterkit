@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>utils</module>
+        <module>jpa</module>
         <module>taskexecutor</module>
         <module>batch</module>
         <module>webmvc</module>

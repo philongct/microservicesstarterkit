@@ -18,4 +18,13 @@
 	<name>api-commons</name>
 	<description>Demo project for Spring Boot</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>l.nguyen.infrastructure</groupId>
+			<artifactId>core-jpa</artifactId>
+			<version>${infrastructure.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
 </project>

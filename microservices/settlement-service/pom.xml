@@ -11,11 +11,11 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>transaction-service</artifactId>
+	<artifactId>settlement-service</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>transaction-service</name>
+	<name>settlement-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
@@ -38,12 +38,6 @@
 
 		<dependency>
 			<groupId>l.nguyen.infrastructure</groupId>
-			<artifactId>core-utils</artifactId>
-			<version>${infrastructure.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>l.nguyen.infrastructure</groupId>
 			<artifactId>core-jpa</artifactId>
 			<version>${infrastructure.version}</version>
 		</dependency>
@@ -61,7 +55,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>l.nguyen.ms.transaction.TransactionApplication</mainClass>
+					<mainClass>l.nguyen.ms.transaction.SettlementApplication</mainClass>
 					<jvmArguments>-Xmx64m</jvmArguments>
 				</configuration>
 				<executions>

@@ -19,8 +19,8 @@
 
     <modules>
 		<module>api-commons</module>
-        <module>authcode-service</module>
         <module>transaction-service</module>
+        <module>settlement-service</module>
     </modules>
 
     <dependencies>
