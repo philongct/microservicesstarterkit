@@ -28,7 +28,8 @@ public class TransactionValidatorService {
     }
 
     private boolean isNull(CreditCardTransaction creditCardTransaction) {
-        return creditCardTransaction.getTransactionDt() == null
+        return creditCardTransaction == null
+                || creditCardTransaction.getTransactionDt() == null
                 || creditCardTransaction.getCardNumber() == null
                 || creditCardTransaction.getMoneyAmount() == null
                 || creditCardTransaction.getPaymentReason() == null;
