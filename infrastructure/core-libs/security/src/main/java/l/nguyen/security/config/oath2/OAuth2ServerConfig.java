@@ -63,8 +63,9 @@ public abstract class OAuth2ServerConfig extends AuthorizationServerConfigurerAd
                 .secret("clientsecret")
                 // Read more about grant types here: https://alexbilbie.com/guide-to-oauth-2-grants/
                 .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token", "password")
-                .accessTokenValiditySeconds(600)
-                .refreshTokenValiditySeconds(600)
+                // Since this is just an example so set expiry period to 1 hour
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600)
                 // Bypass approve form (/uaa/oauth/confirm_access) after login
                 // http://localhost:9999/uaa/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://notes.coding.me)
                 .autoApprove(true)

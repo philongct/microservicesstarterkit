@@ -28,6 +28,15 @@ public class ExecutorUtils {
         return executor;
     }
 
+    /**
+     * Create new concurrent task executor
+     *
+     * @param concurrentThreads
+     * @param threadAliveTimeout
+     * @param threadPrefix
+     *
+     * @return Custom Spring ConcurrentTaskExecutor
+     */
     public static ExtendedConcurrentTaskExecutor newConcurrentTaskExecutor(int concurrentThreads, int threadAliveTimeout, String threadPrefix) {
         ThreadPoolExecutor threadPoolExecutor = newBoundedThreadPool(concurrentThreads, threadAliveTimeout, Integer.MAX_VALUE, threadPrefix);
         return new ExtendedConcurrentTaskExecutor(threadPoolExecutor);
