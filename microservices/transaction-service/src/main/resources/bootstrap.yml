@@ -10,6 +10,9 @@ server:
 
 ---
 spring:
+  # NOTE: cannot run settlement/transaction simulation in
+  # peer mode with multiple instances of transaction service
+  # because we're using embedded database
   profiles: peer
 server:
   # Auto assigned
