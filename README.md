@@ -28,7 +28,7 @@ mvn clean install -DskipTests
 ### Microservices call using client_credentials
 Microservices automatically sign in OAuth2 server and authenticate using client_credentials
 ```
-curl "http://localhost:7000/transactions/any"
+curl "http://localhost:7000/settlement/any"
 ```
 3. Via API Gateway
   * In Firefox open Network Monitor (ctrl + shift + e)

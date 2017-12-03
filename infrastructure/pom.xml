@@ -18,7 +18,8 @@
         <!--Spring-->
         <spring.version>4.3.11.RELEASE</spring.version>
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <!--Some improvements such as: https://github.com/spring-cloud/spring-cloud-netflix/issues/2303-->
+        <spring-cloud.version>Edgware.RC1</spring-cloud.version>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-oauth2.version>2.1.1.RELEASE</spring-oauth2.version>
         <spring-data.version>1.11.6.RELEASE</spring-data.version>
@@ -26,11 +27,11 @@
 
         <!--Web-->
         <servlet.version>3.1.0</servlet.version>
-        <tomcat-embedded.version>8.5.20</tomcat-embedded.version>
 
         <!--Platforms-->
         <vertx.version>3.4.2</vertx.version>
         <docker.image.prefix>lnguyen</docker.image.prefix>
+        <feign-okhttp.version>9.5.1</feign-okhttp.version>
 
         <!--Database-->
         <hibernate.version>5.2.10.Final</hibernate.version>
@@ -64,6 +65,20 @@
         <module>api-gateway</module>
         <module>auth-server</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>repository.spring.release</id>
+            <name>Spring GA Repository</name>
+            <url>http://repo.spring.io/release</url>
+        </repository>
+
+        <repository>
+            <id>repository.spring.milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>

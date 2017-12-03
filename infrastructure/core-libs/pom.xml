@@ -19,6 +19,7 @@
         <module>jpa</module>
         <module>taskexecutor</module>
         <module>batch</module>
+        <module>okhttp</module>
         <module>webmvc</module>
         <module>security</module>
 		<module>springvertx</module>

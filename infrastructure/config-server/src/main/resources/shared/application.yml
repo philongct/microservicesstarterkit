@@ -17,8 +17,11 @@ management:
     enabled: false # disabled the security
 
 feign:
-    hystrix:
-        enabled: true
+  hystrix:
+    enabled: true
+  # Use OkHttp for HTTP2/light weight http client
+  okhttp:
+    enabled: true
 
 hystrix:
   command:
@@ -31,6 +34,9 @@ hystrix:
 ribbon:
   eureka:
     enabled: true
+  # Use OkHttp for HTTP2/light weight http client
+  okhttp:
+    enabled: true
   MaxAutoRetries: 2
   # start 2 microservice instances, try GET serveral times, then shutdown 1,
   # try GET serveral times again to see intermittent loading (due to default round-robin load balancing)
@@ -41,8 +47,11 @@ ribbon:
 eureka:
   server:
     port: 8761
+  # eureka client instance. Move to each application if hostnames are varied
   instance:
-    prefer-ip-address: true
+    # not prefer ip address because certificates based on domain name
+    # or services using virtual host ....
+    prefer-ip-address: false
     hostname: localhost
   client:
     serviceUrl:
