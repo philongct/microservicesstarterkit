@@ -22,7 +22,7 @@ mvn clean install -DskipTests
    * In browser go to http://localhost:9999/uaa/oauth/authorize?response_type=code&client_id=anyclient&redirect_uri=http://stupidurl
    * Fill user_abc/user_abc to login
    * Get "code" param from redirected page
-   * curl http://localhost:9999/uaa/oauth/token -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl&code=<code>"
+   * curl http://localhost:9999/uaa/oauth/token -d "grant_type=authorization_code&client_id=anyclient&client_secret=clientsecret&redirect_uri=http://stupidurl?code=<code>"
    * curl -H "Authorization: Bearer <access_token>" -H "Content-Type: application/json" -d '{"cardNumber":"123456","paymentReason":"noreason","moneyAmount":2.0,"transactionDt":"2017-07-13 10:20:15"}' http://localhost:6000/transaction/authcode/xxxbank
 3. Via API Gateway (To generate simulated transactions)
    * In Firefox open Network Monitor (ctrl + shift + e)
