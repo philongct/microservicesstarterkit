@@ -1,9 +1,6 @@
 package l.nguyen.ms.settlement.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import l.nguyen.ms.common.model.transaction.CreditCardTransaction;
 import l.nguyen.ms.settlement.proxy.TransactionControllerClientRx;
@@ -57,18 +54,21 @@ public class SettlementService {
         running = true;
 
         try {
-            batchJobManager.launchJob("settlementJob",
-                    Collections.singletonMap("banks", new JobParameter((long) bankIds.size())),
+            Map<String, JobParameter> jobParams = new HashMap<>();
+            jobParams.put("banks", new JobParameter((long) bankIds.size()));
+            jobParams.put("date", new JobParameter(new Date()));
+
+            batchJobManager.launchJob("settlementJob", jobParams,
                     new JobExecutionCallBack() {
 
                         @Override
                         public void completed(JobExecution jobExecution) {
-
+                            running = false;
                         }
 
                         @Override
                         public void error(JobExecution jobExecution, Exception cause) {
-
+                            running = false;
                         }
                     });
         } catch (NoSuchJobException e) {

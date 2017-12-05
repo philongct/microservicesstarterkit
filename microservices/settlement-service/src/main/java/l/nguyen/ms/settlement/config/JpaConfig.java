@@ -1,4 +1,4 @@
-package l.nguyen.ms.transaction.config;
+package l.nguyen.ms.settlement.config;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "l.nguyen.ms.transaction.repository")
+@EnableJpaRepositories(basePackages = "l.nguyen.ms.settlement.repository")
 public class JpaConfig {
 
     @Bean
@@ -28,7 +28,7 @@ public class JpaConfig {
         ds.setMaximumPoolSize(2);
 
         ds.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-        ds.setJdbcUrl("jdbc:derby:database/auth-code;create=true");
+        ds.setJdbcUrl("jdbc:derby:database/settlement;create=true");
         ds.setUsername("app");
         ds.setPassword("pass");
 
@@ -41,7 +41,7 @@ public class JpaConfig {
 
         emf.setDataSource(dataSource);
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        emf.setPackagesToScan("l.nguyen.ms.common.model.transaction");
+        emf.setPackagesToScan("l.nguyen.ms.settlement.model");
 
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.DerbyTenSevenDialect");

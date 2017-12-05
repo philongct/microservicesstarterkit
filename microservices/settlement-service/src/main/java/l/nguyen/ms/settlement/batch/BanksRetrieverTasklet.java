@@ -19,13 +19,16 @@ public class BanksRetrieverTasklet implements Tasklet {
 
     private List<String> bankIds;
 
-    public BanksRetrieverTasklet(TransactionControllerClient transactionClient) {
+    private Date date;
+
+    public BanksRetrieverTasklet(TransactionControllerClient transactionClient, Date date) {
         this.transactionClient = transactionClient;
+        this.date = date;
     }
 
     @Override
     public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
-        bankIds = transactionClient.getBankIds(new Date());
+        bankIds = transactionClient.getBankIds(date);
         return RepeatStatus.FINISHED;
     }
 

@@ -50,10 +50,10 @@ public class TransactionGeneratorService {
             SimulatedBankFactory bankFactory = new SimulatedBankFactory();
             SimulatedTransactionFactory transactionFactory = new SimulatedTransactionFactory();
 
-            int banks = Math.max(5, RandomUtils.nextInt(20));
+            int banks = Math.max(5, RandomUtils.nextInt(5) * 3);
             for (int i = 0; i < banks; ++i) {
                 SimulatedBankClient bankClient = new SimulatedBankClient(
-                        Math.max(minTransactionPerBank, RandomUtils.nextInt(maxTransactionPerBank)),
+                        Math.max(minTransactionPerBank, RandomUtils.nextInt(maxTransactionPerBank/2) * 2),
                         bankFactory, transactionFactory, requester, requestExecutor);
                 bankClients.add(bankClient);
 
