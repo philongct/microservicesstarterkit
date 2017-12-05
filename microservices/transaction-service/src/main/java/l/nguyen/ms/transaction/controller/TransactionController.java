@@ -6,14 +6,16 @@ import java.util.List;
 
 import l.nguyen.ms.common.controller.TransactionControllerApi;
 import l.nguyen.ms.common.model.transaction.CreditCardTransaction;
-import l.nguyen.ms.common.model.transaction.GeneratedAuthCode;
 import l.nguyen.ms.common.model.transaction.TransactionAuthResponse;
 import l.nguyen.ms.transaction.repository.AuthCodeRepository;
 import l.nguyen.ms.transaction.service.AuthCodeService;
 import l.nguyen.ms.transaction.service.TransactionGeneratorService;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +44,7 @@ public class TransactionController implements TransactionControllerApi {
 	@PreAuthorize("#oauth2.hasScope('openid') && hasAuthority('abc')")
 	public String generateAuthCode(HttpServletRequest request) {
 		transactionGeneratorService.startSimulation(request.getHeader("Authorization"),
-				5, 5);
+				200, 500);
 		return transactionGeneratorService.getStatus();
 	}
 
@@ -63,34 +65,34 @@ public class TransactionController implements TransactionControllerApi {
 	/**
 	 * For Microservice client
 	 *
-	 * @param requestBank
-	 * @param fromAuthCode
-	 * @param toAuthCode
+	 * @param transactionDate
 	 * @return
 	 */
 	@PreAuthorize("#oauth2.hasScope('openid')")
 	@Override
-	public List<GeneratedAuthCode> getGeneratedAuthCodes(@PathVariable String requestBank,
-														 @PathVariable int fromAuthCode,
-														 @PathVariable int toAuthCode) {
-		return authCodeRepository.findAllByRequestBankAndAuthCodeBetween(requestBank, fromAuthCode, toAuthCode);
+	public List<String> getBankIds(@PathVariable @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) Date transactionDate) {
+		Date from = new DateTime(transactionDate).withTimeAtStartOfDay().toDate();
+		Date to = new DateTime(transactionDate).withTime(23, 59, 59, 999).toDate();
+		return authCodeRepository.findAllRequestedBanks(from, to);
 	}
 
 	/**
 	 * For Microservice client
 	 *
-	 * @param requestBank
+	 * @param bankId
 	 * @param transactionDate
 	 * @param fromAuthCode
-	 * @param toAuthCode
+	 * @param limit
 	 * @return
 	 */
 	@PreAuthorize("#oauth2.hasScope('openid')")
 	@Override
-	public List<CreditCardTransaction> getTransactionsByAuthCodes(@PathVariable String requestBank,
-																  @PathVariable Date transactionDate,
+	public List<CreditCardTransaction> getTransactionsByAuthCodes(@PathVariable String bankId,
+																  @PathVariable
+																  @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+																		  Date transactionDate,
 																  @PathVariable int fromAuthCode,
-																  @PathVariable int toAuthCode) {
-		return authCodeService.getCreditTransactions(requestBank, fromAuthCode, toAuthCode, transactionDate);
+																  @PathVariable int limit) {
+		return authCodeService.getCreditTransactions(bankId, transactionDate, fromAuthCode, limit);
 	}
 }

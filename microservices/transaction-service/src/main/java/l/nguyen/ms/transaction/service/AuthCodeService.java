@@ -19,6 +19,7 @@ import l.nguyen.ms.transaction.repository.TransactionRepository;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
@@ -57,20 +58,22 @@ public class AuthCodeService {
         return new TransactionAuthResponse(AuthorizationStatus.DENIED, null, new Date());
     }
 
-    public List<CreditCardTransaction> getCreditTransactions(String requestBank, int fromAuthCode, int toAuthCode, Date transactionDate) {
+    public List<CreditCardTransaction> getCreditTransactions(String requestBank, Date transactionDate, int fromAuthCode, int limit) {
         Date startOfDay = new DateTime(transactionDate).withTimeAtStartOfDay().toDate();
         Date endOfDay = new DateTime(transactionDate).withTime(23, 59, 59, 999).toDate();
 
         Specification<CreditCardTransaction> cctSpec = (root, cq, cb) -> {
-            Root<GeneratedAuthCode> authCodeRoot = cq.from(GeneratedAuthCode.class);
-            Predicate authCodePredicate = cb.between(authCodeRoot.get("authCode"), fromAuthCode, toAuthCode);
-            Predicate datetimePredicate = cb.between(authCodeRoot.get("generatedDt"), startOfDay, endOfDay);
-            Predicate requestBankPredicate = cb.equal(authCodeRoot.get("requestBank"), requestBank);
+            Predicate authCodePredicate = cb.ge(root.get("authCode").get("authCode"), fromAuthCode);
+            Predicate datetimePredicate = cb.between(root.get("authCode").get("generatedDt"), startOfDay, endOfDay);
+            Predicate requestBankPredicate = cb.equal(root.get("authCode").get("requestBank"), requestBank);
             Predicate authCodeCondition = cb.and(authCodePredicate, datetimePredicate, requestBankPredicate);
 
-            root.fetch("authCode", JoinType.LEFT);
+            // no join fetch when JPA count for Pageable (which return Long)
+            if (Long.class != cq.getResultType()) {
+                root.fetch("authCode");
+            }
             return cq.where(authCodeCondition).getRestriction();
         };
-        return transactionRepository.findAll(cctSpec);
+        return transactionRepository.findAll(cctSpec, new PageRequest(0, limit)).getContent();
     }
 }

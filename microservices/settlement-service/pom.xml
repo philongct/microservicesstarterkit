@@ -38,6 +38,12 @@
 
 		<dependency>
 			<groupId>l.nguyen.infrastructure</groupId>
+			<artifactId>core-batch</artifactId>
+			<version>${infrastructure.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>l.nguyen.infrastructure</groupId>
 			<artifactId>core-jpa</artifactId>
 			<version>${infrastructure.version}</version>
 		</dependency>

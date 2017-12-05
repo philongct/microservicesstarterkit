@@ -47,7 +47,7 @@ public class JpaConfig {
         props.put("hibernate.dialect", "org.hibernate.dialect.DerbyTenSevenDialect");
         props.put("hibernate.show_sql", "true");
         // since this is simulation, we need fresh environment on startup
-        props.put("hibernate.hbm2ddl.auto", "create");
+        props.put("hibernate.hbm2ddl.auto", "update");
         emf.setJpaProperties(props);
 
         return emf;

@@ -1,4 +1,4 @@
-package l.nguyen.ms.transaction.config;
+package l.nguyen.ms.settlement.config;
 
 import l.nguyen.security.config.basicweb.AbstractSecurityConfigurer;
 import org.springframework.context.annotation.Configuration;

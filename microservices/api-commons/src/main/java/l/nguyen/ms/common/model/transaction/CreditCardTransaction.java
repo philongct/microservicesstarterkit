@@ -29,7 +29,7 @@ public class CreditCardTransaction extends AbstractEntity {
     @JsonDeserialize(using = BasicDatetimeDeserializer.class)
     private Date transactionDt;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     private GeneratedAuthCode authCode;
 
     public CreditCardTransaction() {
