@@ -13,15 +13,15 @@ import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.ItemStreamWriter;
 
-public class TransactionWriter implements ItemStreamWriter<CreditCardTransaction> {
+public class SettlementWriter implements ItemStreamWriter<CreditCardTransaction> {
 
-    private static final Logger logger = LoggerFactory.getLogger(TransactionWriter.class);
+    private static final Logger logger = LoggerFactory.getLogger(SettlementWriter.class);
 
     private SettlementRepository settlementRepository;
 
     private SettlementBalance balance;
 
-    public TransactionWriter(SettlementRepository settlementRepository, String bankId, Date date) {
+    public SettlementWriter(SettlementRepository settlementRepository, String bankId, Date date) {
         this.settlementRepository = settlementRepository;
 
         balance = new SettlementBalance();
@@ -51,6 +51,7 @@ public class TransactionWriter implements ItemStreamWriter<CreditCardTransaction
         for (CreditCardTransaction creditCardTransaction : list) {
             balance.setNumberOfTransactions(balance.getNumberOfTransactions() + 1);
             balance.setBalanceAmount(balance.getBalanceAmount() + creditCardTransaction.getMoneyAmount());
+            // TODO: write to report file
         }
     }
 }

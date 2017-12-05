@@ -91,10 +91,10 @@ public class SettlementJobConfig {
 
     @Bean
     @StepScope
-    public TransactionWriter transactionWriter(SettlementRepository settlementRepository,
-                                               @Value("#{jobParameters[date]}") Date date,
-                                               @Value("#{stepExecutionContext[" + BankSettlementPartitioner.KEY_NAME + "]}") String bankId) {
-        return new TransactionWriter(settlementRepository, bankId, date);
+    public SettlementWriter transactionWriter(SettlementRepository settlementRepository,
+                                              @Value("#{jobParameters[date]}") Date date,
+                                              @Value("#{stepExecutionContext[" + BankSettlementPartitioner.KEY_NAME + "]}") String bankId) {
+        return new SettlementWriter(settlementRepository, bankId, date);
     }
 
     @Bean
