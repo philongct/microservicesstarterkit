@@ -8,7 +8,7 @@
 	    <groupId>l.nguyen.infrastructure</groupId>
         <artifactId>infrastructure</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- take it from classpath -->
+        <relativePath>../infrastructure</relativePath>
     </parent>
 
     <groupId>l.nguyen.ms</groupId>
@@ -20,7 +20,7 @@
     <modules>
 		<module>api-commons</module>
         <module>transaction-service</module>
-        <module>settlement-service</module>
+        <module>transaction-reporting-service</module>
     </modules>
 
     <dependencies>
