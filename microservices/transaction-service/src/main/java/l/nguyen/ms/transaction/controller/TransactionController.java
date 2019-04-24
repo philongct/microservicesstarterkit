@@ -1,8 +1,21 @@
 package l.nguyen.ms.transaction.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import l.nguyen.ms.common.controller.TransactionControllerApi;
 import l.nguyen.ms.common.model.transaction.CreditCardTransaction;
@@ -10,14 +23,6 @@ import l.nguyen.ms.common.model.transaction.TransactionAuthResponse;
 import l.nguyen.ms.transaction.repository.AuthCodeRepository;
 import l.nguyen.ms.transaction.service.AuthCodeService;
 import l.nguyen.ms.transaction.service.TransactionGeneratorService;
-import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TransactionController implements TransactionControllerApi {
@@ -40,6 +45,8 @@ public class TransactionController implements TransactionControllerApi {
 	 *
 	 * @return
 	 */
+    // Disclaimers: This is just spaghetti code to expose "RPC"
+	// It doesn't follow RESTFul API design. I don't have time for it yet
 	@GetMapping("/authcode/simulate")
 	@PreAuthorize("#oauth2.hasScope('openid') && hasAuthority('abc')")
 	public String generateAuthCode(HttpServletRequest request) {
@@ -56,6 +63,8 @@ public class TransactionController implements TransactionControllerApi {
 	 * @param requestBank
 	 * @return
 	 */
+    // Disclaimers: This is just spaghetti code to expose "RPC"
+	// It doesn't follow RESTFul API design. I don't have time for it yet
 	@PostMapping("/authcode/{requestBank}")
 	@PreAuthorize("#oauth2.hasScope('openid') && hasAuthority('abc')")
 	public TransactionAuthResponse generateAuthCode(@PathVariable String requestBank, @RequestBody CreditCardTransaction transaction) {
@@ -68,6 +77,8 @@ public class TransactionController implements TransactionControllerApi {
 	 * @param transactionDate
 	 * @return
 	 */
+    // Disclaimers: This is just spaghetti code to expose "RPC"
+	// It doesn't follow RESTFul API design. I don't have time for it yet
 	@PreAuthorize("#oauth2.hasScope('openid')")
 	@Override
 	public List<String> getBankIds(@PathVariable @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) Date transactionDate) {
@@ -85,6 +96,8 @@ public class TransactionController implements TransactionControllerApi {
 	 * @param limit
 	 * @return
 	 */
+    // Disclaimers: This is just spaghetti code to expose "RPC"
+	// It doesn't follow RESTFul API design. I don't have time for it yet
 	@PreAuthorize("#oauth2.hasScope('openid')")
 	@Override
 	public List<CreditCardTransaction> getTransactionsByAuthCodes(@PathVariable String bankId,

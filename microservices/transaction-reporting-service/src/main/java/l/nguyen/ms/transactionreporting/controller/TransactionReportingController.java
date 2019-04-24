@@ -12,8 +12,10 @@ public class TransactionReportingController {
 	@Autowired
 	private TransactionReportingService transactionReportingService;
 
-	@GetMapping("/export")
-	public String exportAllTransactions() {
-		return transactionReportingService.startReporting();
-	}
+    // Disclaimers: This is just spaghetti code to expose "RPC"
+    // It doesn't follow RESTFul API design. I don't have time for it yet
+    @GetMapping("/export")
+    public String exportAllTransactions() {
+        return transactionReportingService.startReporting();
+    }
 }

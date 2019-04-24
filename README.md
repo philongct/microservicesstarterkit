@@ -39,7 +39,7 @@ mvn clean install -DskipTests
    * Go to http://localhost:4000/transaction-service/transaction/authcode/simulate, login page should appear
    * For more details about OAuth2 flows, read more here: http://blog.monkey.codes/how-to-use-jwt-and-oauth-with-spring-boot/
    * TODO: Invalidate access_token after user logged out of OAuth2 Server
-  
+
 ### Microservices call using client_credentials
 Microservices automatically sign in OAuth2 server and authenticate using client_credentials.
 After finish above 3 steps, run:
