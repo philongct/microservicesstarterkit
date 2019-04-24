@@ -1,0 +1,12 @@
+server:
+  context-path: /transaction-reporting
+
+security:
+  oauth2:
+    client:
+      # TODO each client should have its own config entry in auth server
+      clientId: anyclient
+      clientSecret: clientsecret
+      accessTokenUri: ${uaa.server.url}/oauth/token
+      grant-type: client_credentials
+      scope: openid

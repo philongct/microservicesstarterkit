@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: transaction-reporting-service
+  cloud:
+    config:
+      http://localhost:8888
+
+server:
+  port: 7000
+
+---
+spring:
+  profiles: peer
+server:
+  # Auto assigned
+  port: 0

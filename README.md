@@ -10,6 +10,7 @@ mvn clean install -DskipTests
 * ConfigServer (-Xmx32m)
 * OAuth2Server (-Xmx32m)
 * RegistryServer (-Xmx64m)
+* ApiGateway (-Xmx128m)
 * TransactionApplication (-Xmx128m)
 * SettlementApplication (-Xmx64m)
 
@@ -43,5 +44,5 @@ mvn clean install -DskipTests
 Microservices automatically sign in OAuth2 server and authenticate using client_credentials.
 After finish above 3 steps, run:
 ```
-curl "http://localhost:7000/settlement/export"
+curl "http://localhost:7000/transaction-reporting/export"
 ```
